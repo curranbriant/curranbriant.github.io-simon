@@ -1,9 +1,9 @@
-const alpha = document.querySelector('.alpha')
-const beta = document.querySelector('.beta')
-const gamma = document.querySelector('.gamma')
-const delta = document.querySelector('.delta')
+const red = document.querySelector('.red')
+const blue = document.querySelector('.blue')
+const yellow = document.querySelector('.yellow')
+const green = document.querySelector('.green')
 const game = document.querySelector('.game')
-let buttons = ['alpha', 'beta', 'gamma', 'delta']
+let buttons = ['red', 'blue', 'yellow', 'green']
 let userClick = []; //pushes click event into empty array
 let userInput = []; //empty array clicked button will be pushed into
 let runningRandom = []; //random buttons will be pushed here
@@ -12,21 +12,21 @@ checkMatch = true; // boolean to check if random button array matches user input
 
 
 
-alpha.addEventListener('click', function(evt){
-    userClick.push('alpha')
-    console.log('alpha')
+red.addEventListener('click', function(evt){
+    userClick.push('red')
+    console.log('red')
 })
-beta.addEventListener('click', function(evt){
-    userClick.push('beta')
-    console.log('beta')
+blue.addEventListener('click', function(evt){
+    userClick.push('blue')
+    console.log('blue')
 })
-gamma.addEventListener('click', function(evt){
-    userClick.push('gamma')
-    console.log('gamma')
+yellow.addEventListener('click', function(evt){
+    userClick.push('yellow')
+    console.log('yellow')
 })
-delta.addEventListener('click', function(evt){
-    userClick.push('delta')
-    console.log('delta')
+green.addEventListener('click', function(evt){
+    userClick.push('green')
+    console.log('green')
 })
 
 function randomButton(){
@@ -55,23 +55,32 @@ game.addEventListener('click', function(evt){
             console.log('no')
             checkMatch = false;
         }
-    })
-    
-
-
-
-
-
-
-
-
-
-/* var random = items[Math.floor(Math.random()*items.length)]
-https://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
-    if (i=0, i < 1, i++){
-        gameArr() === userClick()
-         console.log('Yep!')
-    }else{
-        console.log('no')
+        if (checkMatch = true){
+            game.addEventListener('click', function(evt){
+                userInput.push(userClick)
+        if (userClick[1] === runningRandom[1]){
+            console.log('YA!')
+            checkMatch = true;
+            game.removeEventListener('click', function(evt){
+            })
+        }
+        if(userClick[1] !== runningRandom[1]){
+                console.log('no')
+                checkMatch = false;
+            }
+        })
     }
-*/
+})
+
+
+
+
+
+var offset = 0;
+(buttons).each(function(button){
+
+  setTimeout(function(){
+    console.log(button);
+  }, 5000 + offset);    
+ offset += 5000;
+});
