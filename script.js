@@ -1,15 +1,45 @@
-const red = document.querySelector('.red')
-const blue = document.querySelector('.blue')
-const yellow = document.querySelector('.yellow')
-const green = document.querySelector('.green')
-const game = document.querySelector('.game')
+const red = document.querySelector('.red')//red button
+const blue = document.querySelector('.blue')//blue button
+const yellow = document.querySelector('.yellow')//yellow button
+const green = document.querySelector('.green')//green button
+const game = document.querySelector('.game')//game board
+const active = document.querySelector('.active')
+let activeRed = document.querySelector(".red.active");
+let activeBlue = document.querySelector(".blue.active");
+let activeYellow = document.querySelector(".red.active");
+let activeGreen = document.querySelector(".red.active");
 let buttons = ['red', 'blue', 'yellow', 'green']
 let userClick = []; //pushes click event into empty array
 let userInput = []; //empty array clicked button will be pushed into
 let runningRandom = []; //random buttons will be pushed here
-let random = buttons[Math.floor((Math.random()* 2)+ 1)] //selects random button
+let random;
 checkMatch = true; // boolean to check if random button array matches user input array
 
+function colorButton(id, color) {
+    this.id = id;
+    this.color = color;
+}
+
+let redButton = new colorButton(1, "red");
+let blueButton = new colorButton(2, "blue");
+let yellowButton = new colorButton(3, "yellow");
+let greenButton = new colorButton(4, "green");
+
+function randomButton() {
+    let random = Math.floor((Math.random() * 4) + 1);
+    if (random = 'red') {
+      runningRandom.push('red');
+    }else if(random = 'blue'){
+        runningRandom.push('blue');
+    }else if(random = 'yellow'){
+        runningRandom.push('yellow');
+    }else if (random = 'green'){
+        runningRandom.push('green');
+    }
+    console.log(random)//see output of random function above
+    //console.log(runningRandom)// see if it actually pushed into array
+}
+randomButton()
 
 
 red.addEventListener('click', function(evt){
@@ -28,59 +58,36 @@ green.addEventListener('click', function(evt){
     userClick.push('green')
     console.log('green')
 })
-
-function randomButton(){
-    random = buttons[Math.floor((Math.random()* 4)+ 0)]
-    runningRandom.push(random)//pushes random button into empty array
-    return runningRandom
-}
-randomButton()
-
-console.log(runningRandom)
-
-
-
-
 game.addEventListener('click', function(evt){
-        userInput.push(userClick)
-        if (userClick[0] === runningRandom[0]){
-            console.log('yes!')
-            checkMatch = true;
-            game.removeEventListener('click', function(evt){
-            })
-            randomButton()
-            console.log(runningRandom)
-        }
-        else if(userClick[0] !== runningRandom[0]){
+    userInput.push(userClick)
+    if (userClick[0] === runningRandom[0]){
+        console.log('yes!')
+        checkMatch = true;
+
+        game.removeEventListener('click', function(evt){
+        })
+        //randomButton()
+        console.log(runningRandom)
+    }
+    else if(userClick[0] !== runningRandom[0]){
+        console.log('no')
+        checkMatch = false;
+        
+    }
+    if (checkMatch = true){
+        game.addEventListener('click', function(evt){
+            userInput.push(userClick)
+    if (userClick[1] === runningRandom[1]){
+        console.log('YA!')
+        checkMatch = true;
+        game.removeEventListener('click', function(evt){
+        })
+    }
+    if(userClick[1] !== runningRandom[1]){
             console.log('no')
             checkMatch = false;
         }
-        if (checkMatch = true){
-            game.addEventListener('click', function(evt){
-                userInput.push(userClick)
-        if (userClick[1] === runningRandom[1]){
-            console.log('YA!')
-            checkMatch = true;
-            game.removeEventListener('click', function(evt){
-            })
-        }
-        if(userClick[1] !== runningRandom[1]){
-                console.log('no')
-                checkMatch = false;
-            }
-        })
-    }
+    })
+}
 })
 
-
-
-
-
-var offset = 0;
-(buttons).each(function(button){
-
-  setTimeout(function(){
-    console.log(button);
-  }, 5000 + offset);    
- offset += 5000;
-});
