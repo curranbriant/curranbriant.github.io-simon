@@ -1,21 +1,3 @@
-const red = document.querySelector('.red')//red button
-const blue = document.querySelector('.blue')//blue button
-const yellow = document.querySelector('.yellow')//yellow button
-const green = document.querySelector('.green')//green button
-const game = document.querySelector('.game')//game board
-const active = document.querySelector('game.active')
-let activeRed = document.querySelector(".red.active");
-let activeBlue = document.querySelector(".blue.active");
-let activeYellow = document.querySelector(".yellow.active");
-let activeGreen = document.querySelector(".green.active");
-let buttons = ['red', 'blue', 'yellow', 'green']
-let userClick = []; //pushes click event into empty array
-let userInput = []; //empty array clicked button will be pushed into
-let runningRandom = []; //random buttons will be pushed here
-let random;
-let i = 0;
-checkMatch = true; // boolean to check if random button array matches user input array
-
 function colorButton(id, color) {
     this.id = id;
     this.color = color;
@@ -106,3 +88,8 @@ function clicky() {
 function myStopFunction() {
   clearTimeout(playPattern);
 }
+
+
+
+
+/////
