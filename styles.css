@@ -10,19 +10,19 @@ body {
     grid-template-columns: repeat(2, 1fr);
     min-height: 500px;
     }
-    .red {
+    #one {
         border: 1px solid black;
         background-color: red;
     }
-    .blue {
+    #two {
         border: 1px solid black;
         background-color: blue;
     }
-    .yellow {
+    #three {
         border: 1px solid black;
         background-color: yellow;
     }
-    .green {
+    #four {
         border: 1px solid black;
         background-color: green;
     }
