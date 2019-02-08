@@ -26,15 +26,15 @@ body {
         border: 1px solid black;
         background-color: green;
     }
-    .red:active{
+    #red:active{
         opacity: .5;
     }
-    .blue:active{
+    #blue:active{
         opacity: .5;
     }
-    .yellow:active{
+    #yellow:active{
         opacity: .5;
     }
-    .green:active{
+    #green:active{
         opacity: .5;
     }

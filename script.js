@@ -11,10 +11,25 @@ function colorButton(id, color, blink) {
 }
 
 let buttons = [
-    new colorButton(one, "red", "white"),
-     new colorButton(two, "blue",  "white"),
-    new colorButton(three, "yellow", "white"),
-    new colorButton(four, "green", "white"),
+    new colorButton(one, "red", "maroon"),
+     new colorButton(two, "blue",  "navy"),
+    new colorButton(three, "yellow", "orange"),
+    new colorButton(four, "green", "brown"),
     
     ]
+let runningRandom = [];
+var noMatch = false;
 
+
+
+    
+    
+
+    function randomButton(number) { //redid the random button function and made it way lets complicated
+        for (i = 0; i < number; i++) {
+           runningRandom.push(Math.floor(Math.random() * 4)); 
+        }   
+    }
+    
+    
+    
