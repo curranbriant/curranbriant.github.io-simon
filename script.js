@@ -22,12 +22,11 @@ let colorButtons = [
 let runningRandom = [];
 let round = 0;
 let randomCount = 0;
-let userTurn = false;
 playing = false;
 
 document.getElementById('start').onclick = function() {
-  reset();
   playing = true;
+  runningRandom = [];
   randomGenerator();
 };
 
@@ -50,10 +49,9 @@ function randomGenerator() {
 }
 
 function reset() {
-  runningRandom = [];
-  round = 0;
   randomCount = 0;
   playing = false;
+  runningRandom = [i];
 }
 
 function gameOver() {
