@@ -1,85 +1,82 @@
-class colorButton {
-    constructor(id, blink, color ) {
-        this.id = id;
-        this.blink = blink//the blink function
-        this.color = color;
+class SimonButton {
+  constructor(id, color, blink) {
+    this.id = id;
+    this.blink = blink;
+    this.color = color;
+    this.flash = function() {
+      document.getElementById(id).style.background = blink;
+      setTimeout(function() {
+        document.getElementById(id).style.background = color;
+      }, 250);
+    };
+  }
+}
 
-    }
-    /* doesnt work
-    flash() {
-        document.getElementById(id).style.background = blink;
-        setTimeout(function() {
-            document.getElementById(id).classList.toggle('.active')
-            
-        }, 750);
- */
-    }
+let colorButtons = [
+  new SimonButton('one', 'red', 'white'),
+  new SimonButton('two', 'blue', 'white'),
+  new SimonButton('three', 'yellow', 'white'),
+  new SimonButton('four', 'green', 'white'),
+];
 
-
-let buttons = [
-    new colorButton(one, "red", "maroon"),
-     new colorButton(two, "blue",  "navy"),
-    new colorButton(three, "yellow", "orange"),
-    new colorButton(four, "green", "brown"),
-    
-    ];
 let runningRandom = [];
-start = 0;
+let round = 0;
+let randomCount = 0;
+let userTurn = false;
 playing = false;
 
+document.getElementById('start').onclick = function() {
+  reset();
+  playing = true;
+  randomGenerator();
+};
 
-
-
-
-    document.getElementById("newGame").onclick = function() {
-        playing = true;
-        randomGenerator();
+for (var i = 0; i < colorButtons.length; i++) {
+  document.getElementById(colorButtons[i].id).onclick = function() {
+    if (colorButtons[runningRandom[randomCount++]].id != this.id) {
+      gameOver();
     }
-
-
-    for (let i = 0; i < buttons.length; i++) {
-        //buttonIndex.addEventListener("click", function(){
-            
-                    if (start === playPattern.length) {
-                        start = 0;
-                        randomGenerator();
-                    }
-                }
-
-
-            function randomGenerator() {
-                randomButton(1);
-                playPattern();
-                console.log(runningRandom[0])
-            };
-            function randomButton(j) { //redid the random button function and made it way lets complicated
-                for (i = 0; i < j; i++) {
-                runningRandom.push(Math.floor(Math.random()*1)+1)
-                }}
-                
-
-
-
-
-    function playPattern() { //ryan gave me this idea
-            var i = 0;
-            showBlinks();
-        }
-        function showBlinks() {
-        setTimeout(function() {
-            for (var i =0; i > runningRandom; i++){
-            if (i < runningRandom.length) { //zakk gave me this idea when we met day 2 
-                console.log(colorButton[runningRandom[i]])
-                colorButton[runningRandom[i]].flash();
-                playPattern();
-            } }
-        
-        }, 1000);
-        
+    if (randomCount === runningRandom.length) {
+      randomCount = 0;
+      randomGenerator();
     }
+  };
+}
 
-    
+function randomGenerator() {
+  randomButton(1);
+  showBlinks();
+  console.log(showBlinks);
+}
 
+function reset() {
+  runningRandom = [];
+  round = 0;
+  randomCount = 0;
+  playing = false;
+}
 
+function gameOver() {
+  alert('You lost! work on your memory.');
+  playing = false;
+  reset();
+}
+function randomButton(number) {
+  for (i = 0; i < number; i++) {
+    runningRandom.push(Math.floor(Math.random() * 4));
+  }
+}
 
+function showBlinks() {
+  var i = 0;
+  playPattern();
 
+  function playPattern() {
+    setTimeout(function() {
+      colorButtons[runningRandom[i++]].flash();
+      if (i < runningRandom.length) {
+        playPattern();
+      }
+    }, 1000);
+  }
+}
