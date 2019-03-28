@@ -10,6 +10,16 @@ body {
   grid-template-columns: repeat(2, 1fr);
   min-height: 500px;
 }
+.sub-heading {
+  font-size: 0.8em;
+  margin-left: 25%;
+  max-width: 50%;
+  align-content: center;
+  justify-content: center;
+}
+.heading {
+  margin-bottom: 0;
+}
 #one {
   border: 1px solid black;
   background-color: red;
@@ -25,4 +35,19 @@ body {
 #four {
   border: 1px solid black;
   background-color: green;
+}
+.S {
+  color: blue;
+}
+.I {
+  color: red;
+}
+.M {
+  color: rgb(233, 226, 24);
+}
+.O {
+  color: orange;
+}
+.N {
+  color: green;
 }
